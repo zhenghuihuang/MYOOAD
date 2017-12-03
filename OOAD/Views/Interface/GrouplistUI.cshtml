@@ -1,0 +1,78 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="divport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0">
+    <title>Untitled Document</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="/css/grouplist.css" rel="stylesheet" type="text/css">
+</head>
+<body class="fullbackground">
+    <div class="columndisplay">
+        <img class="UsersIcon" src="/images/users.png">
+        <label class="seminarblackword">讨论课4<br />固定分组</label>
+    </div>
+
+    <div class="whiteword">
+        <div class="panel-body">
+            <div class="column4">分组信息：</div>
+            <div class="column3" id="div1" style="display:none;" onclick="Cizhi()"><button class="btnquit">辞职</button></div>
+        </div>
+    </div>
+    <div class="block">
+        <div class="panel-body">
+            <div class="column1"><img src="/images/user.png"></div>
+            <div class="column2">name<br />number</div>
+            <div class="column3 rightblueword" id="leader" style="display:none;">队长</div>
+        </div>
+    </div>
+    <div class="block" id="div2">
+        <div class="panel-body">
+            <div class="column1"><img src="/images/user.png"></div>
+            <div class="column2">name<br />number</div>
+        </div>
+
+    </div>
+    <div class="whiteword">
+        <div class="panel-body">
+            <div>选题：</div>
+        </div>
+    </div>
+    <div class="middlediv"  id="div4">
+        <button class="btnleader" onclick="Beleader()">成为队长</button>
+        <p class="middlegreyword">您的队伍还没有队长，您可以选择成为队长。</p>
+    </div>
+    <div class="middlediv" id="div3" style="display:none">
+        <button class="btnleader" onclick="location='RandomGroupChooseTopicPage'">选题</button>
+        <p class="middlegreyword"></p>
+    </div>
+
+
+    <script>
+        function Beleader() {
+            document.getElementById("div1").style.display = "block";
+            document.getElementById("leader").style.display = "block";
+            document.getElementById("div2").style.marginTop = "15%";
+            document.getElementById("div3").style.display = "block";
+            document.getElementById("div4").style.display = "none";
+        }
+
+        function Cizhi() {
+            document.getElementById("leader").style.display = "none";
+            document.getElementById("div2").style.marginTop = "0%";
+            document.getElementById("div3").style.display = "none";
+            document.getElementById("div4").style.display = "block";
+            document.getElementById("div1").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

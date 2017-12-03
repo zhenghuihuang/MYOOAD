@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="divport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0">
+    <title>Untitled Document</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/css/LoginUI.css" rel="stylesheet" type="text/css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+    </script>
+
+</head>
+<body class="body">
+    <div class="PictureDiv">
+        <!-- 背景图的div -->
+        <img class="bulb" src="/images/bulb.png" />
+        <img src="/images/background.jpg" class="Picture" />
+        <div class="title">请先登录</div>
+    </div>
+    <div class="hrDiv"></div>
+    <div class="mainView">
+        <div class="phoneID">手机号 :</div>
+        <input id="textPhone" class="inputPhoneID">
+        <div class="password">密码 :</div>
+        <input id="textPassword" type="password" class="inputPassword">
+
+        <div class="comfirmDiv">
+            <button id="btn1" class="confirmButton">登录</button>
+        </div>
+
+        <div class="tip1">还没有账号？</div>
+        <div class="tip2" onclick="location='RegisterPage'">请先注册</div>
+    </div>
+
+    <script>
+            $(document).ready(function () {
+                $("#btn1").click(function () {
+                    var name = $("#textPhone").val();
+                    var age = $("#textPassword").val();
+                    var data = { phone: name, password: age };
+                    $.ajax
+                        ({
+                            async: true,
+                            cache: false,
+                            timeout: 60 * 60 * 1000,
+                            contentType: 'application/json',
+                            data: JSON.stringify(data),
+                            type: "POST",
+                            datatype: "json",
+                            url: "/Login",
+                            success: function (result) {
+
+                                if (result.message == "登陆成功" && result.name == "12345") {
+                                    location.href = "StudentMainPage";
+                                }
+                                else if (result.message == "登陆成功" && result.name == "54321") {
+                                    location.href = "TeacherMainPage";
+                                }
+                                else
+                                    window.alert(result.name + result.message);
+                            },
+                            error: function (result) {
+
+                            },
+                        })
+                });
+            });</script>
+
+
+</body>
+</html>
+
+
+
